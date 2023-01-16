@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <include th:replace="views/components/metas :: metas"></include>
+    <include th:replace="views/components/styles :: styles"></include>
+
+    <!--form-rounded-->
+    <link rel="stylesheet" th:href="@{../../vendors/assets/stylerounded.css}">
+    <link rel="stylesheet" th:href="@{../../vendors/css/animate.min.css}">
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- navbar -->
+    <include th:replace="views/components/navbar :: navbar"></include>
+    <!-- sidebar -->
+    <include th:replace="views/components/sidebar :: sidebar"></include>
+
+    <!-- content wrapper -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6 animated bounceInRight">
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Student</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Content Header (Page header) -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="card card-outline card-green">
+                    <div class="card-header">
+                        <h5><i class="fa fa-plus"></i> Update Student Information</h5>
+                    </div>
+
+                    <form th:action="@{/create-instructor}" th:object="${students}" enctype="multipart/form-data" method="post" role="form">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="row">
+
+                                        <div class="form-group">
+                                            <!-- Add hidden form field to handle update -->
+                                            <input th:field="*{id}" type="hidden"  class="form-control" id="txtId"/>
+                                        </div>
+
+
+                                        <div class="col-md-12 text-center">
+                                            <div class="form-group">
+                                                <img th:src="${students.photosImagePath}" alt="Upload Picture"
+                                                     class="img-circle" height="100" width="100"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="studentNameAdd" class="col-form-label">Student Name:</label>
+                                                <input type="text" th:field="*{studentName}" class="form-control form-rounded" id="studentNameAdd" name="studentName" placeholder="Enter student name" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="studentCodeAdd" class="col-form-label">Student Code:</label>
+                                                <input type="text" th:field="*{studentCode}" class="form-control form-rounded" id="studentCodeAdd" name="studentCode" placeholder="Student ID" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="contactAdd" class="col-form-label">Contact:</label>
+                                                <input type="number" th:field="*{contact}" class="form-control form-rounded" id="contactAdd" name="contact" placeholder="+63-9XXX-XXX-XXX" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="emailAdd" class="col-form-label">Email:</label>
+                                                <input type="email" th:field="*{email}" class="form-control form-rounded" id="emailAdd" name="email" placeholder="Email Address" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="birthDateAdd" class="col-form-label">BirthDate:</label>
+                                                <input type="date" th:field="*{birthDate}" class="form-control form-rounded" id="birthDateAdd" name="birthDate" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <label class="col-form-label">Gender:</label> <br/>
+                                                    <input type="radio" th:field="*{gender}" value="Male"/> Male
+                                                    <input type="radio" th:field="*{gender}" value="Female"/> Female
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Account Status:</label>
+                                                <br/>
+                                                <input type="checkbox" th:field="*{status}" value="Active"/> Active
+                                                <input type="checkbox" th:field="*{status}" value="Not Active"/> Not Active
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="inputFile">File Upload</label>
+                                                <input type="file" name="image" id="inputFile">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="addressAdd">Address</label>
+                                                <input type="text" th:field="*{address}" id="addressAdd" name="address" class="form-control form-rounded" placeholder="Address..." required="required">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn bg-green btn-rounded">
+                                <i class="fa fa-save"></i> Submit
+                            </button>
+                            <a href="/students" class="btn btn-outline-danger btn-rounded">
+                                <i class="fa fa-times"></i> Close
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- end Main content -->
+
+
+    </div>
+    <!-- end content wrapper -->
+
+
+</div>
+<include th:replace="views/components/scripts :: scripts"></include>
+
+
+</body>
+</html>

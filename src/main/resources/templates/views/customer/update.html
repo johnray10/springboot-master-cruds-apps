@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <include th:replace="views/components/metas :: metas"></include>
+    <include th:replace="views/components/styles :: styles"></include>
+
+    <!--form-rounded-->
+    <link rel="stylesheet" th:href="@{../../vendors/assets/stylerounded.css}">
+    <link rel="stylesheet" th:href="@{../../vendors/css/animate.min.css}">
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- navbar -->
+    <include th:replace="views/components/navbar :: navbar"></include>
+    <!-- sidebar -->
+    <include th:replace="views/components/sidebar :: sidebar"></include>
+
+    <!-- content wrapper -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6 animated bounceInRight">
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Student</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Content Header (Page header) -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="card card-outline card-green">
+                    <div class="card-header">
+                        <h5><i class="fa fa-plus"></i> Update Student Information</h5>
+                    </div>
+
+                    <form th:action="@{/customers/update}" th:object="${customers}" enctype="multipart/form-data" method="post" role="form">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="row">
+
+                                        <div class="form-group">
+                                            <!-- Add hidden form field to handle update -->
+                                            <input th:field="*{id}" type="hidden"  class="form-control" id="txtId"/>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="customerNameAdd" class="col-form-label">Customer Name:</label>
+                                                <input th:field="*{customerName}" type="text" class="form-control form-rounded" id="customerNameAdd" name="customerName" placeholder="Enter customer name" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="customerCodeAdd" class="col-form-label">Customer Code:</label>
+                                                <input th:field="*{customerCode}" type="text" class="form-control form-rounded" id="customerCodeAdd" name="customerCode" placeholder="customer code" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="contactAdd" class="col-form-label">Contact:</label>
+                                                <input th:field="*{contact}" type="number" class="form-control form-rounded" id="contactAdd" name="contact" placeholder="+63-9XXX-XXX-XXX" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="dateEncodeAdd" class="col-form-label">Date Encode:</label>
+                                                <input th:field="*{dateEncode}" type="date" class="form-control form-rounded" id="dateEncodeAdd" name="dateEncode" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <label class="col-form-label">Gender:</label> <br/>
+                                                    <input type="radio" th:field="*{gender}" value="Male"/> Male
+                                                    <input type="radio" th:field="*{gender}" value="Female"/> Female
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">Account Status:</label>
+                                                <br/>
+                                                <input type="checkbox" th:field="*{status}" value="Active"/> Active
+                                                <input type="checkbox" th:field="*{status}" value="Not Active"/> Not Active
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="cityAdd" class="col-form-label">City :</label>
+                                                <input th:field="*{city}" type="text" id="cityAdd" name="city" class="form-control form-rounded" placeholder="city" required="required">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="addressAdd">Address</label>
+                                                <textarea th:field="*{address}" id="addressAdd" class="form-control form-rounded" name="address" required></textarea>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn bg-green btn-rounded">
+                                <i class="fa fa-save"></i> Submit
+                            </button>
+                            <a href="/customers" class="btn btn-outline-danger btn-rounded">
+                                <i class="fa fa-times"></i> Close
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- end Main content -->
+
+
+    </div>
+    <!-- end content wrapper -->
+
+
+</div>
+<include th:replace="views/components/scripts :: scripts"></include>
+
+
+</body>
+</html>
